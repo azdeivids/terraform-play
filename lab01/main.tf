@@ -1,6 +1,14 @@
-# User azurerm as the provider and deploy the resources within Uk South Region
+terraform {
+  required_providers {
+    azurerm = {
+        source = "hashicorp/azurerm"
+        version = "3.34.0"
+    }
+  }
+}
+
 provider "azurerm" {
-  region = "uksouth"
+  features {}
 }
 
 variable "vmname" {
@@ -69,7 +77,7 @@ storage_os_disk {
 os_profile {
   computer_name = "hostname"
   admin_username = "deivids"
-  admin_password = "Password1"
+  admin_password = "8gn*!0#G0%oK"
   }
 os_profile_linux_config {
     disable_password_authentication = false
