@@ -45,6 +45,8 @@ resource "azurerm_network_interface" "tfint01" {
   location = azurerm_resource_group.tfrg01.location
   resource_group_name = azurerm_resource_group.tfrg01.name
 
+# As a remider, this will create NIC with IP config for internal network only. 
+# There will be no public IP, only private IPv4 address within the subnet defined above.
   ip_configuration {
     name = "testconf01"
     subnet_id = azurerm_subnet.internal.id
