@@ -24,6 +24,9 @@ variable "vnetname" {
 resource "azurerm_resource_group" "tfrg01" {
   name = "${var.rgname}-001"
   location = "UK South"
+  tags = {
+    "CreatedBy" = "Deivids"
+  }
 }
 
 resource "azurerm_virtual_network" "tfvnet01" {
