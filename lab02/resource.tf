@@ -21,6 +21,6 @@ resource "azurerm_app_service_source_control" "sourcecontorl" {
   app_id = azurerm_linux_web_app.webapp.id
   repo_url = "https://github.com/Azure-Samples/nodejs-docs-hello-world"
   branch = "master"
-  use_manual_integration = 
+  use_manual_integration = false
   use_mercurial = false
 }
