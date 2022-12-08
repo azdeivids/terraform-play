@@ -54,44 +54,44 @@ resource "azurerm_windows_virtual_machine_scale_set" "tfvmss03" {
   }
 }
 resource "azurerm_public_ip" "tfpip03" {
-  name = "${var.tfpip03}-01"
-  location = azurerm_resource_group.tfrg03.location
+  name                = "${var.tfpip03}-01"
+  location            = azurerm_resource_group.tfrg03.location
   resource_group_name = azurerm_resource_group.tfrg03.name
-  allocation_method = "Static"
+  allocation_method   = "Static"
 }
 resource "azurerm_lb" "tflb03" {
-  name = "${var.tflb03}-01"
-  location = azurerm_resource_group.tfrg03.location
+  name                = "${var.tflb03}-01"
+  location            = azurerm_resource_group.tfrg03.location
   resource_group_name = azurerm_resource_group.tfrg03.name
-  sku = "Standard"
+  sku                 = "Standard"
   
 
   frontend_ip_configuration {
-    name = "PublicIPAddress"
+    name                 = "PublicIPAddress"
     public_ip_address_id = azurerm_public_ip.tfpip03.id
   }
 }
 resource "azurerm_lb_rule" "lbrule03" {
-  loadbalancer_id = azurerm_lb.tflb03.id
-  name = "lb-https-rule-01"
-  protocol = "Tcp"
-  frontend_port = 80
-  backend_port = 80
-  frontend_ip_configuration_name = "PublicIPAddress"
+  loadbalancer_id                 = azurerm_lb.tflb03.id
+  name                            = "lb-https-rule-01"
+  protocol                        = "Tcp"
+  frontend_port                   = 80
+  backend_port                    = 80
+  frontend_ip_configuration_name  = "PublicIPAddress"
 }
 resource "azurerm_lb_probe" "lbprobe03" {
   loadbalancer_id = azurerm_lb.tflb03.id
-  name = "http-running-probe"
-  port = 80
+  name            = "http-running-probe"
+  port            = 80
 }
 resource "azurerm_lb_backend_address_pool" "backend-pool" {
-  name = "tflb03-backend-pool"
+  name            = "tflb03-backend-pool"
   loadbalancer_id = azurerm_lb.tflb03.id
 }
 resource "azurerm_lb_outbound_rule" "lboutboundrule" {
-  name = "OutboundRule01"
-  loadbalancer_id = azurerm_lb.tflb03.id
-  protocol = "Tcp"
+  name                    = "OutboundRule01"
+  loadbalancer_id         = azurerm_lb.tflb03.id
+  protocol                = "Tcp"
   backend_address_pool_id = azurerm_lb_backend_address_pool.backend-pool.id
 
   frontend_ip_configuration {
