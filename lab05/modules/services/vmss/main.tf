@@ -1,4 +1,14 @@
-
+provider "azurerm" {
+  features {}
+}
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.34.0"
+    }
+  }
+}
 resource "azurerm_resource_group" "tfrg05" {
   name     = "${var.prefix}-resources"
   location = var.location
@@ -98,7 +108,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss05" {
 
   depends_on = [azurerm_lb_probe.lbprobe05]
 }
-data "azurerm_public_ip" "azpip05" {
-  name                = azurerm_public_ip.pip05.name
-  resource_group_name = azurerm_resource_group.tfrg05.name
+data "terraform_remote_state" "tfstate05" {
+  backend = "azurerm"
+  config = {
+    storage_account_name = var.remote_state_st_acc
+    container_name       = var.remote_container
+    key                  = var.remote_state_key
+  }
 }

@@ -15,7 +15,6 @@ terraform {
         key                  = "terraform.tfstate"
     }
 }
-
-module "vmss_module" {
-  source = "~/terraform-play/lab05/module/services/vmss"
+module "vmss05" {
+  source = "/home/deivids/terraform-play/lab05/modules/services/vmss"
 }
