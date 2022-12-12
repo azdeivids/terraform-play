@@ -2,7 +2,7 @@
 
 Repository for some terraform files created during testing
 
-### Terraform command reference ###
+## Terraform command reference ##
 
 | Command | Description |
 | --- | --- |
@@ -12,3 +12,12 @@ Repository for some terraform files created during testing
 | `terraform plan` | Genereta an execute plan showcasing actions to be taken |
 | `terraform apply` | Create and/or update infrastructure |
 | `terraform destroy` | Destroy terraform managed infrastructure |
+
+## Terraform resources ##
+### Documentation ###
+####  Hashicorp ####
+* https://www.terraform.io/docs/providers/azurerm/index.html
+* https://github.com/hashicorp/terraform-provider-azurerm
+#### Azure ####
+* https://learn.microsoft.com/en-us/azure/developer/terraform/
+* https://github.com/Azure/terraform/tree/master/quickstart
