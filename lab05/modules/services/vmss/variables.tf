@@ -10,6 +10,10 @@ variable "location" {
   default     = "UK South"
 }
 # variables to specify the remote state
+variable "remote_state_rg" {
+  desdescription = "RG where the remote state st account is being stored"
+  typtype = string  
+}
 variable "remote_state_st_acc" {
   description = "Container blob where the remote state will be stored"
   type        = string
