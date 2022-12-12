@@ -7,9 +7,9 @@ Repository for some terraform files created during testing
 | Command | Description |
 | --- | --- |
 | `terraform <command> -help` | Get help on any specific terraform command |
-| `terraform fmt` | Format .tf files per HCL canonical standard |
+| `terraform fmt` | Format .tf files per HCL standard |
 | `terraform init` | Prep the directory and initialize the backend |
-| `terraform plan` | Genereta an execute plan showcasing actions to be taken |
+| `terraform plan` | Generate and execute plan showcasing actions to be taken during deployment |
 | `terraform apply` | Create and/or update infrastructure |
 | `terraform destroy` | Destroy terraform managed infrastructure |
 
