@@ -1,12 +1,12 @@
 variable "location" {
-  type = string
+  type    = string
   default = "uksouth"
 }
 variable "prefix" {
-  type = string
+  type    = string
   default = "terra-demo-01"
 }
 variable "ssh-source-address" {
-  type = string
+  type    = string
   default = "*"
 }
