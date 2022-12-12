@@ -3,12 +3,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "tfrg03" {
-  name     = "${var.rgname03}"
-  location = "${var.location}"
+  name     = var.rgname03
+  location = var.location
 }
 
 resource "azurerm_virtual_network" "tfvnet03" {
-  name                = "${var.vnetname03}"
+  name                = var.vnetname03
   resource_group_name = azurerm_resource_group.tfrg03.name
   location            = azurerm_resource_group.tfrg03.location
   address_space       = ["10.0.0.0/16"]
@@ -64,7 +64,7 @@ resource "azurerm_lb" "tflb03" {
   location            = azurerm_resource_group.tfrg03.location
   resource_group_name = azurerm_resource_group.tfrg03.name
   sku                 = "Standard"
-  
+
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
@@ -72,12 +72,12 @@ resource "azurerm_lb" "tflb03" {
   }
 }
 resource "azurerm_lb_rule" "lbrule03" {
-  loadbalancer_id                 = azurerm_lb.tflb03.id
-  name                            = "lb-https-rule-01"
-  protocol                        = "Tcp"
-  frontend_port                   = 80
-  backend_port                    = 80
-  frontend_ip_configuration_name  = "PublicIPAddress"
+  loadbalancer_id                = azurerm_lb.tflb03.id
+  name                           = "lb-https-rule-01"
+  protocol                       = "Tcp"
+  frontend_port                  = 80
+  backend_port                   = 80
+  frontend_ip_configuration_name = "PublicIPAddress"
 }
 resource "azurerm_lb_probe" "lbprobe03" {
   loadbalancer_id = azurerm_lb.tflb03.id
