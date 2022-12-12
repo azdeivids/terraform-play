@@ -1,3 +1,4 @@
+
 resource "azurerm_resource_group" "tfrg05" {
   name     = "${var.prefix}-resources"
   location = var.location
@@ -16,28 +17,6 @@ resource "azurerm_subnet" "snet05-1" {
   virtual_network_name = azurerm_virtual_network.vnet05.name
   address_prefixes     = ["10.0.2.0/24"]
 }
-resource "azurerm_network_security_group" "nsg05" {
-  name                = "${var.prefix}-nsg"
-  location            = azurerm_resource_group.tfrg05.location
-  resource_group_name = azurerm_resource_group.tfrg05.name
-
-  security_rule {
-    name                       = "HTTP-in"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
-}
-resource "azurerm_subnet_network_security_group_association" "nsgassoc05" {
-  subnet_id                 = azurerm_subnet.snet05-1.id
-  network_security_group_id = azurerm_network_security_group.nsg05.id
-}
-
 resource "azurerm_public_ip" "pip05" {
   name                = "${var.prefix}-pip"
   location            = azurerm_resource_group.tfrg05.location
@@ -60,6 +39,7 @@ resource "azurerm_lb" "lb05" {
 resource "azurerm_lb_backend_address_pool" "lbpoolback05" {
   loadbalancer_id     = azurerm_lb.lb05.id
   name                = "BackEndAddressPool"
+  
 }
 
 resource "azurerm_lb_probe" "lbprobe05" {
