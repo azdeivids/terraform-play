@@ -113,7 +113,7 @@ data "terraform_remote_state" "tfstate05" {
   config = {
     resresource_group_name = "${var.remote_state_rg}"
     storage_account_name   = "${var.remote_state_st_acc}"
-    container_name         = "${var.remote_container}"
+    container_name         = "${var.tfstate_container}"
     key                    = "${var.remote_state_key}"
   }
 }
