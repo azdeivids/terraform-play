@@ -47,16 +47,16 @@ resource "azurerm_lb" "lb05" {
 }
 
 resource "azurerm_lb_backend_address_pool" "lbpoolback05" {
-  loadbalancer_id     = azurerm_lb.lb05.id
-  name                = "BackEndAddressPool"
-  
+  loadbalancer_id = azurerm_lb.lb05.id
+  name            = "BackEndAddressPool"
+
 }
 
 resource "azurerm_lb_probe" "lbprobe05" {
-  loadbalancer_id     = azurerm_lb.lb05.id
-  name                = "ssh-running-probe"
-  protocol            = "Tcp"
-  port                = 22
+  loadbalancer_id = azurerm_lb.lb05.id
+  name            = "ssh-running-probe"
+  protocol        = "Tcp"
+  port            = 22
 }
 
 resource "azurerm_lb_nat_pool" "lbnat05" {
@@ -111,8 +111,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss05" {
 data "terraform_remote_state" "tfstate05" {
   backend = "azurerm"
   config = {
-    storage_account_name = "${var.remote_state_st_acc}"
-    container_name       = "${var.remote_container}"
-    key                  = "${var.remote_state_key}"
+    resresource_group_name = "${var.remote_rg_name}"
+    storage_account_name   = "${var.remote_state_st_acc}"
+    container_name         = "${var.remote_container}"
+    key                    = "${var.remote_state_key}"
   }
 }
