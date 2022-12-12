@@ -18,4 +18,7 @@ variable "db_password" {
 
 ###     Use set instead of export when on Windows system
 
-## you can echo the env variables to view the stored values
+## you can echo the env variables to view the stored values like so
+###### echo $TF_VAR_db_username
+
+## in pwsh you can use just the dollar signe like so $TF_VAR_db_username
