@@ -1,6 +1,6 @@
 variable "remote_state_rg" {
-  desdescription = "RG where the remote state st account is being stored"
-  typtype = string
+  description = "RG where the remote state st account is being stored"
+  type = string
   default = "terraform-state-storage-uksouth"
 }
 variable "remote_state_st_acc" {
