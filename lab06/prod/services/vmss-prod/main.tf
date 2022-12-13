@@ -1,0 +1,24 @@
+provider "azurerm" {
+  features {}
+}
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.34.0"
+    }
+  }
+}
+module "vmss06" {
+  source = "/home/deivids/terraform-play/lab06/modules/services/vmss"
+
+  remote_state_rg     = var.remote_state_rg
+  remote_state_st_acc = var.remote_state_st_acc
+  tfstate_container   = var.tfstate_container
+  remote_state_key    = var.remote_state_key
+
+  default_size       = 2
+  min_size           = 2
+  max_size           = 10
+  enable_autoscaling = true
+}
