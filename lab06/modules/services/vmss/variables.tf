@@ -11,7 +11,7 @@ variable "location" {
 # variables to specify the remote state
 variable "remote_state_rg" {
   description = "RG where the remote state st account is being stored"
-  type = string  
+  type        = string
 }
 variable "remote_state_st_acc" {
   description = "Container blob where the remote state will be stored"
@@ -27,17 +27,17 @@ variable "tfstate_container" {
 }
 variable "enable_autoscaling" {
   description = "Enable or disable autoscaling using"
-  type = bool
+  type        = bool
 }
 variable "default_size" {
   description = "Default vmss instance size"
-  type = number
+  type        = number
 }
 variable "min_size" {
   description = "Minium vmss instance size"
-  type = number
+  type        = number
 }
 variable "max_size" {
   description = "Maximum vmss instance size"
-  type = number
+  type        = number
 }
