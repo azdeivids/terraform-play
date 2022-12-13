@@ -25,3 +25,7 @@ variable "tfstate_container" {
   description = "Name of the container where the tf state file is to be stored"
   type        = string
 }
+variable "enable_autoscaling" {
+  description = "Enable or disable autoscaling using"
+  type = bool
+}
