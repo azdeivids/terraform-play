@@ -3,20 +3,20 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg06" {
-  name = "${var.prefix}-rg"
+  name     = "${var.prefix}-rg"
   location = var.location
 }
 
 resource "azurerm_virtual_network" "vnet06" {
   name                = "${var.prefix}-vnet"
-  address_space = [ "10.10.0.0/16" ]
+  address_space       = ["10.10.0.0/16"]
   resource_group_name = azurerm_resource_group.rg06.name
-  location = azurerm_resource_group.rg06.location
+  location            = azurerm_resource_group.rg06.location
 }
 
 resource "azurerm_subnet" "snet06" {
   name                 = "${var.prefix}-snet"
-  address_prefixes = [ "10.10.2.0/24" ]
+  address_prefixes     = ["10.10.2.0/24"]
   virtual_network_name = azurerm_virtual_network.vnet06.name
   resource_group_name  = azurerm_resource_group.rg06.name
 }
@@ -43,8 +43,8 @@ resource "azurerm_lb" "lb06" {
 }
 
 resource "azurerm_lb_backend_address_pool" "pool-back-06" {
-  loadbalancer_id     = azurerm_lb.lb06.id
-  name                = "BackendAddressPool"
+  loadbalancer_id = azurerm_lb.lb06.id
+  name            = "BackendAddressPool"
 }
 
 resource "azurerm_lb_nat_pool" "natpool06" {
@@ -59,9 +59,9 @@ resource "azurerm_lb_nat_pool" "natpool06" {
 }
 
 resource "azurerm_lb_probe" "probe06" {
-  name                = "ssh-running-probe"
-  loadbalancer_id     = azurerm_lb.lb06.id
-  port                = 22
+  name            = "ssh-running-probe"
+  loadbalancer_id = azurerm_lb.lb06.id
+  port            = 22
 }
 
 resource "azurerm_lb_rule" "lb_rule06" {
@@ -81,15 +81,15 @@ resource "azurerm_linux_virtual_machine_scale_set" "lin-vmss-06" {
   sku                 = "Standard_B1s"
   instances           = 1
   admin_username      = "Deivids"
-  admin_password = "Pa55word1!"
+  admin_password      = "Pa55word1!"
 
   disable_password_authentication = false
-  
+
   source_image_reference {
     publisher = "Canonical"
-    offer = "UbuntuServer"
-    sku = "16.04-LTS"
-    version = "latest"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
   }
 
 
@@ -115,7 +115,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "lin-vmss-06" {
   depends_on = [azurerm_lb_rule.lb_rule06]
 }
 resource "azurerm_monitor_autoscale_setting" "scale06" {
-  count = var.enable_autoscaling ? 1 : 0
+  count               = var.enable_autoscaling ? 1 : 0
   name                = "myAutoscaleSetting"
   resource_group_name = azurerm_resource_group.rg06.name
   location            = azurerm_resource_group.rg06.location
@@ -188,9 +188,9 @@ resource "azurerm_monitor_autoscale_setting" "scale06" {
 data "terraform_remote_state" "tfstate05" {
   backend = "azurerm"
   config = {
-    resource_group_name = "${var.remote_state_rg}"
-    storage_account_name   = "${var.remote_state_st_acc}"
-    container_name         = "${var.tfstate_container}"
-    key                    = "${var.remote_state_key}"
+    resource_group_name  = "${var.remote_state_rg}"
+    storage_account_name = "${var.remote_state_st_acc}"
+    container_name       = "${var.tfstate_container}"
+    key                  = "${var.remote_state_key}"
   }
 }
