@@ -29,3 +29,15 @@ variable "enable_autoscaling" {
   description = "Enable or disable autoscaling using"
   type = bool
 }
+variable "default_size" {
+  description = "Default vmss instance size"
+  type = number
+}
+variable "min_size" {
+  description = "Minium vmss instance size"
+  type = number
+}
+variable "max_size" {
+  description = "Maximum vmss instance size"
+  type = number
+}
