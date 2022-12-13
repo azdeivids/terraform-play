@@ -16,8 +16,8 @@ Repository for some terraform files created during testing
 ## Terraform resources ##
 ### Documentation ###
 ####  Hashicorp ####
-* https://www.terraform.io/docs/providers/azurerm/index.html
-* https://github.com/hashicorp/terraform-provider-azurerm
+* [azurerm provider documentation](https://www.terraform.io/docs/providers/azurerm/index.html)
+* [azurerm provider github examples](https://github.com/hashicorp/terraform-provider-azurerm)
 #### Azure ####
-* https://learn.microsoft.com/en-us/azure/developer/terraform/
-* https://github.com/Azure/terraform/tree/master/quickstart
+* [Azure Terraform Learn](https://learn.microsoft.com/en-us/azure/developer/terraform/)
+* [Azure Terraform Quickstart Templates](https://github.com/Azure/terraform/tree/master/quickstart)
