@@ -125,9 +125,9 @@ resource "azurerm_monitor_autoscale_setting" "scale06" {
     name = "defaultProfile"
 
     capacity {
-      default = 1
-      minimum = 1
-      maximum = 5
+      default = var.default_size
+      minimum = var.min_size
+      maximum = var.max_size
     }
 
     rule {
