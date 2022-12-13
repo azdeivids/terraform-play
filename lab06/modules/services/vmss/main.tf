@@ -115,6 +115,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "lin-vmss-06" {
   depends_on = [azurerm_lb_rule.lb_rule06]
 }
 resource "azurerm_monitor_autoscale_setting" "scale06" {
+  count = var.enable_autoscaling ? 1 : 0
   name                = "myAutoscaleSetting"
   resource_group_name = azurerm_resource_group.rg06.name
   location            = azurerm_resource_group.rg06.location
