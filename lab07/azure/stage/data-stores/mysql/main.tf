@@ -26,8 +26,11 @@ module "mysql-flexible-server" {
   providers = {
     azurerm = azurerm.dev_subscription
   }
+
+  pdnsz = 0
+
   remote_state_rg     = var.remote_state_rg
   remote_state_st_acc = var.remote_state_st_acc
-  tfstate_container   = var.tfstate_container
+  remote_state_cn   = var.remote_state_cn
   remote_state_key    = var.remote_state_key
 }
