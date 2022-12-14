@@ -15,7 +15,7 @@ provider "azurerm" {
 }
 provider "azurerm" {
   features {}
-  
+
   subscription_id = var.prod_subscription
   alias           = "prod_subscription"
 }
@@ -28,7 +28,7 @@ data "azurerm_subscription" "prod_subscription" {
 }
 # generate random number
 resource "random_string" "name" {
-  length = 5
+  length  = 5
   numeric = true
   special = false
 }
@@ -56,7 +56,7 @@ resource "azurerm_subnet" "snet07-1" {
     name = "fs"
 
     service_delegation {
-      name    = "Microsoft.DBforMySQL/flexibleServers"
+      name = "Microsoft.DBforMySQL/flexibleServers"
       actions = [
         "Microsoft.Network/virtualNetworks/subnets/join/action",
       ]
@@ -65,11 +65,13 @@ resource "azurerm_subnet" "snet07-1" {
 }
 # manage private DNS with azure dns
 resource "azurerm_private_dns_zone" "pdnsz07" {
+  count               = var.pdnsz ? 1 : 0
   name                = "${var.rg_prefix}.mysql.database.azure.com"
   resource_group_name = azurerm_resource_group.rg07.name
 }
 # link private dns with vnet
 resource "azurerm_private_dns_zone_virtual_network_link" "pdnsz-link07" {
+  count                 = var.pdnsz ? 1 : 0
   name                  = "mysqlfsVnetZone${var.rg_prefix}.com"
   private_dns_zone_name = azurerm_private_dns_zone.pdnsz07.name
   resource_group_name   = azurerm_resource_group.rg07.name
