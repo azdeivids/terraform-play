@@ -1,28 +1,20 @@
-variable "prefix" {
-  description = "The prefix which should be used for all resources in this example"
-  type        = string
-  default     = "lab05"
-}
-
-variable "location" {
-  description = "The Azure Region in which all resources in this example should be created."
-  type        = string
-  default     = "UK South"
-}
-# variables to specify the remote state
 variable "remote_state_rg" {
   description = "RG where the remote state st account is being stored"
   type        = string
+  default     = "terraform-state-storage-uksouth"
 }
 variable "remote_state_st_acc" {
   description = "Container blob where the remote state will be stored"
   type        = string
+  default     = "tfstate428150812"
 }
 variable "remote_state_key" {
   description = "Path to the storage account remote state key"
   type        = string
+  default     = "terraform.tfstate"
 }
-variable "tfstate_container" {
+variable "remote_state_cn" {
   description = "Name of the container where the tf state file is to be stored"
   type        = string
+  default     = "tfstate"
 }

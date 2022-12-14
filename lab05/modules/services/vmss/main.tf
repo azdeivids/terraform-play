@@ -111,9 +111,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss05" {
 data "terraform_remote_state" "tfstate05" {
   backend = "azurerm"
   config = {
-    resource_group_name = "${var.remote_state_rg}"
-    storage_account_name   = "${var.remote_state_st_acc}"
-    container_name         = "${var.tfstate_container}"
-    key                    = "${var.remote_state_key}"
+    resource_group_name  = "${var.remote_state_rg}"
+    storage_account_name = "${var.remote_state_st_acc}"
+    container_name       = "${var.tfstate_container}"
+    key                  = "${var.remote_state_key}"
   }
 }

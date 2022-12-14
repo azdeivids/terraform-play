@@ -5,12 +5,12 @@ terraform {
       version = "=3.34.0"
     }
   }
-    backend "azurerm" {
-        resource_group_name  = "terraform-state-storage-uksouth"
-        storage_account_name = "tfstate428150812"
-        container_name       = "tfstate"
-        key                  = "terraform.tfstate"
-    }
+  backend "azurerm" {
+    resource_group_name  = "terraform-state-storage-uksouth"
+    storage_account_name = "tfstate428150812"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 
 }
 

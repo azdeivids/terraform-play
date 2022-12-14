@@ -103,8 +103,8 @@ resource "azurerm_mysql_flexible_server" "mysqlsrv07" {
   }
   storage {
     auto_grow_enabled = var.storage_auto_grow
-    iops    = var.storage_iops
-    size_gb = var.storage_size
+    iops              = var.storage_iops
+    size_gb           = var.storage_size
   }
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.pdnsz-link07]
@@ -116,4 +116,13 @@ resource "azurerm_mysql_flexible_database" "mysqldb07" {
   name                = "mysqlfsdb_${random_string.name.result}"
   resource_group_name = azurerm_resource_group.rg07.name
   server_name         = azurerm_mysql_flexible_server.mysqlsrv07.name
+}
+data "terraform_remote_state" "tfstate05" {
+  backend = "azurerm"
+  config = {
+    resource_group_name  = "${var.remote_state_rg}"
+    storage_account_name = "${var.remote_state_st_acc}"
+    container_name       = "${var.remote_state_cn}"
+    key                  = "${var.remote_state_key}"
+  }
 }

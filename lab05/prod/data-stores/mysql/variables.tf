@@ -1,12 +1,12 @@
 variable "db_username" {
   description = "MySQL DB Username"
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 variable "db_password" {
   description = "MySQL DB User password"
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 
 

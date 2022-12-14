@@ -11,7 +11,7 @@ variable "remote_state_key" {
   description = "Path to the storage account remote state key"
   type        = string
 }
-variable "tfstate_container" {
+variable "remote_state_cn" {
   description = "Name of the container where the tf state file is to be stored"
   type        = string
 }
@@ -63,40 +63,40 @@ variable "geo_redundant_backup_enabled" {
 }
 variable "flexible_server_sku" {
   description = "SKU name for mysql flexible server"
-  type = string
-  default = "B_Standard_B1s"
+  type        = string
+  default     = "B_Standard_B1s"
 }
 variable "flexible_server_version" {
   description = "Version to be used with mysql flexible server"
-  type = string
-  default = "8.0.21"
+  type        = string
+  default     = "8.0.21"
 }
 variable "flexible_server_zone" {
   description = "Availability zone in which mysql felixble server is to be located"
-  type = number
-  default = 1
+  type        = number
+  default     = 1
 }
 variable "high_availability_mode" {
   description = "High availability mode for mysql flex server."
-  type = string
-  default = "SameZone"
+  type        = string
+  default     = "SameZone"
 }
 variable "high_availability_standby_zone" {
   description = "Zone where standby server will be located"
-  type = number
+  type        = number
 }
 variable "storage_auto_grow" {
   description = "Enable/disable storage auto grow"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 variable "storage_iops" {
   description = "Storage IOPS for mysql flex server"
-  type = number
-  default = 360
+  type        = number
+  default     = 360
 }
 variable "storage_size" {
   description = "Max storage allowed for mysql flex server (GB)"
-  type = number
-  default = 20
+  type        = number
+  default     = 20
 }
