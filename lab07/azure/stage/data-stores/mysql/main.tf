@@ -26,7 +26,13 @@ module "mysql-flexible-server" {
     azurerm = azurerm.dev_subscription
   }
 
-  pdnsz = 0
+  rg_prefix = "tfrg"
+  location = "UK South"
+  pdnsz = false
+  geo_redundant_backup_enabled = false
+  high_availability_standby_zone = 1
+  db_username = var.db_username
+  db_password = var.db_password
 
   remote_state_rg     = var.remote_state_rg
   remote_state_st_acc = var.remote_state_st_acc
