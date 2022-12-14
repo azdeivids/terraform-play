@@ -31,6 +31,6 @@ module "mysql-flexible-server" {
 
   remote_state_rg     = var.remote_state_rg
   remote_state_st_acc = var.remote_state_st_acc
-  remote_state_cn   = var.remote_state_cn
+  remote_state_cn     = var.remote_state_cn
   remote_state_key    = var.remote_state_key
 }
