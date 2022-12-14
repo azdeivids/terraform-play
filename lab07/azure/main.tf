@@ -9,10 +9,16 @@ terraform {
 }
 
 provider "azurerm" {
+  features {
+    
+  }
   subscription_id = var.dev_subscription
   alias = "dev_subscription"
 }
 provider "azurerm" {
+  features {
+    
+  }
   subscription_id = var.prod_subscription
   alias = "prod_subscription"
 }
