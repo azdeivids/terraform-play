@@ -87,7 +87,7 @@ resource "azurerm_mysql_flexible_server" "mysqlsrv07" {
   backup_retention_days        = var.backup_retention_days
   delegated_subnet_id          = azurerm_subnet.snet07-1.id
   geo_redundant_backup_enabled = var.geo_redundant_backup_enabled ? 1 : 0
-  private_dns_zone_id          = azurerm_private_dns_zone.pdnsz07.id
+  private_dns_zone_id          = var.pdnsz == true ? [azurerm_private_dns_zone.pdnsz07.id] : null
   sku_name                     = var.flexible_server_sku
   version                      = var.flexible_server_version
   zone                         = var.flexible_server_zone
