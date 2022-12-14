@@ -1,6 +1,6 @@
 # set TF_VAR_dev_subscription=<id>
 variable "dev_subscription" {
-  description = "Dev subscription id"
+  description = "Development subscription id"
   type = string
   sensitive = true
 }
