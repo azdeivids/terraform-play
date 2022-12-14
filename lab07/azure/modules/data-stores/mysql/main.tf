@@ -88,9 +88,9 @@ resource "azurerm_mysql_flexible_server" "mysqlsrv07" {
   delegated_subnet_id          = azurerm_subnet.snet07-1.id
   geo_redundant_backup_enabled = var.geo_redundant_backup_enabled ? 1 : 0
   private_dns_zone_id          = azurerm_private_dns_zone.pdnsz07.id
-  sku_name                     = "GP_Standard_D2ds_v4"
-  version                      = "8.0.21"
-  zone                         = "1"
+  sku_name                     = var.flexible_server_sku
+  version                      = var.flexible_server_version
+  zone                         = var.flexible_server_zone
 
   high_availability {
     mode                      = "ZoneRedundant"

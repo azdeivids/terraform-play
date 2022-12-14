@@ -61,3 +61,18 @@ variable "geo_redundant_backup_enabled" {
   description = "Enable/disable GEO redundancy"
   type        = bool
 }
+variable "flexible_server_sku" {
+  description = "SKU name for mysql flexible server"
+  type = string
+  default = "B_Standard_B1s"
+}
+variable "flexible_server_version" {
+  description = "Version to be used with mysql flexible server"
+  type = string
+  default = "8.0.21"
+}
+variable "flexible_server_zone" {
+  description = "Availability zone in which mysql felixble server is to be located"
+  type = number
+  default = 1
+}
