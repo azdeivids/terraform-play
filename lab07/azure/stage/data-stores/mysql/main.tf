@@ -23,7 +23,7 @@ module "mysql-flexible-server" {
   source = "/home/deivids/terraform-play/lab07/azure/modules/data-stores/mysql"
 
   providers = {
-    azurerm = azurerm.dev_subscription
+    azurerm.dev_subscription = azurerm.dev_subscription
   }
 
   rg_prefix = "tfrg"
