@@ -93,8 +93,8 @@ resource "azurerm_mysql_flexible_server" "mysqlsrv07" {
   zone                         = var.flexible_server_zone
 
   high_availability {
-    mode                      = "ZoneRedundant"
-    standby_availability_zone = "2"
+    mode                      = var.high_availability_mode
+    standby_availability_zone = var.high_availability_standby_zone
   }
   maintenance_window {
     day_of_week  = 0
@@ -102,11 +102,12 @@ resource "azurerm_mysql_flexible_server" "mysqlsrv07" {
     start_minute = 0
   }
   storage {
-    iops    = 360
-    size_gb = 20
+    auto_grow_enabled = var.storage_auto_grow
+    iops    = var.storage_iops
+    size_gb = var.storage_size
   }
 
-  depends_on = [azurerm_private_dns_zone_virtual_network_link.default]
+  depends_on = [azurerm_private_dns_zone_virtual_network_link.pdnsz-link07]
 }
 # create the mysql flexible server database
 resource "azurerm_mysql_flexible_database" "mysqldb07" {

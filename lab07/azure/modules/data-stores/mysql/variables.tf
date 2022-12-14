@@ -76,3 +76,27 @@ variable "flexible_server_zone" {
   type = number
   default = 1
 }
+variable "high_availability_mode" {
+  description = "High availability mode for mysql flex server."
+  type = string
+  default = "SameZone"
+}
+variable "high_availability_standby_zone" {
+  description = "Zone where standby server will be located"
+  type = number
+}
+variable "storage_auto_grow" {
+  description = "Enable/disable storage auto grow"
+  type = bool
+  default = false
+}
+variable "storage_iops" {
+  description = "Storage IOPS for mysql flex server"
+  type = number
+  default = 360
+}
+variable "storage_size" {
+  description = "Max storage allowed for mysql flex server (GB)"
+  type = number
+  default = 20
+}
