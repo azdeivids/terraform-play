@@ -3,23 +3,10 @@ terraform {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "=3.34.0 "
+      cconfiguration_aliases = [ azurerm.dev_subscription, azurerm.prod_subscription ]
     }
   }
 }
-
-provider "azurerm" {
-  features {}
-
-  subscription_id = var.dev_subscription
-  alias           = "dev_subscription"
-}
-provider "azurerm" {
-  features {}
-
-  subscription_id = var.prod_subscription
-  alias           = "prod_subscription"
-}
-
 data "azurerm_subscription" "dev_subscription" {
   provider = azurerm.dev_subscription
 }
