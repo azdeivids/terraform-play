@@ -1,9 +1,9 @@
 terraform {
   required_providers {
     azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=3.34.0 "
-      cconfiguration_aliases = [ azurerm.dev_subscription, azurerm.prod_subscription ]
+      source                 = "hashicorp/azurerm"
+      version                = "=3.34.0 "
+      cconfiguration_aliases = [azurerm.dev_subscription, azurerm.prod_subscription]
     }
   }
 }
